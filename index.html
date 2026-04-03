@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRUPAS - 顧客の信頼を可視化する</title>
+  <meta name="description" content="TRUPASはホスピタリティ業界における顧客の信頼を可視化するサービスです。来店マナーを評価し、信頼スコアとメダルで可視化します。">
+  <meta property="og:title" content="TRUPAS - Trust Visualization for Hospitality">
+  <meta property="og:description" content="顧客の信頼を可視化する新しいサービス。来店マナーを評価し、信頼スコアとメダルで可視化します。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://trupas.jp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #16213e;
+      --navy-light: #1a2744;
+      --navy-dark: #0e1629;
+      --gold: #c9a96e;
+      --gold-light: #d4ba85;
+      --gold-dark: #b8944f;
+      --white: #ffffff;
+      --gray-50: #f8f9fa;
+      --gray-100: #f0f1f3;
+      --gray-200: #e2e4e8;
+      --gray-600: #6b7280;
+      --gray-800: #1f2937;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--gray-800);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER / NAV ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(22, 33, 62, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      opacity: 0.85;
+      transition: opacity 0.3s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--navy-dark) 0%, var(--navy) 40%, var(--navy-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 80%;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; max-width: 720px; }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 50px;
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.08em;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--gold-light);
+      font-weight: 300;
+      margin-bottom: 24px;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 2;
+      margin-bottom: 40px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 16px 48px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--navy-dark);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      border-radius: 4px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201, 169, 110, 0.3);
+    }
+
+    /* ===== SECTIONS (common) ===== */
+    section { padding: 100px 24px; }
+
+    .section-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--gray-600);
+      margin-bottom: 56px;
+      max-width: 600px;
+    }
+
+    /* ===== ABOUT ===== */
+    .about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      color: var(--gray-600);
+      font-size: 0.95rem;
+    }
+
+    .about-visual {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: 12px;
+      padding: 48px 32px;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .about-visual .diamond {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .about-visual h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .about-visual p {
+      font-size: 0.85rem;
+      opacity: 0.75;
+      line-height: 1.8;
+    }
+
+    /* ===== FEATURES ===== */
+    .features { background: var(--gray-50); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px 28px;
+      border: 1px solid var(--gray-200);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(22, 33, 62, 0.08);
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      line-height: 1.8;
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .how-it-works { background: var(--white); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      counter-reset: step;
+    }
+
+    .step {
+      text-align: center;
+      padding: 24px 16px;
+      position: relative;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .step h3 {
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .step p {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    /* ===== MEDALS ===== */
+    .medals { background: var(--gray-50); }
+
+    .medal-categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .medal-category {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 28px 20px;
+      border: 1px solid var(--gray-200);
+      text-align: center;
+    }
+
+    .medal-category-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .medal-category h3 {
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .medal-list {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      line-height: 2;
+    }
+
+    /* ===== TIERS ===== */
+    .tiers { background: linear-gradient(160deg, var(--navy-dark), var(--navy)); }
+
+    .tiers .section-label { color: var(--gold); }
+    .tiers .section-title { color: var(--white); }
+    .tiers .section-subtitle { color: rgba(255,255,255,0.6); }
+
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .tier-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(201, 169, 110, 0.2);
+      border-radius: 12px;
+      padding: 32px 20px;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+
+    .tier-card:hover { border-color: var(--gold); }
+
+    .tier-icon { font-size: 2.5rem; margin-bottom: 12px; }
+
+    .tier-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .tier-points {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 12px;
+    }
+
+    .tier-card p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+
+    /* ===== FOR FACILITIES ===== */
+    .for-facilities { background: var(--white); }
+
+    .facility-benefits {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .benefit {
+      display: flex;
+      gap: 16px;
+      padding: 24px;
+      background: var(--gray-50);
+      border-radius: 12px;
+    }
+
+    .benefit-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: var(--navy);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .benefit h3 {
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .benefit p {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      text-align: center;
+      padding: 80px 24px;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      color: var(--white);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 16px 48px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--navy-dark);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      border-radius: 4px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201, 169, 110, 0.3);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy-dark);
+      padding: 48px 24px 32px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+
+    .footer-text {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+
+    .footer-copyright {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 24px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+
+      .features-grid,
+      .medal-categories,
+      .tier-grid { grid-template-columns: 1fr 1fr; }
+
+      .steps { grid-template-columns: 1fr 1fr; }
+
+      .facility-benefits { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .features-grid,
+      .medal-categories,
+      .tier-grid,
+      .steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="#" class="logo">TRUPAS</a>
+      <ul class="nav-links">
+        <li><a href="#about">TRUPASとは</a></li>
+        <li><a href="#features">特徴</a></li>
+        <li><a href="#how">仕組み</a></li>
+        <li><a href="#tiers">ティア</a></li>
+        <li><a href="#facilities">加盟店の方へ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">Trust Visualization for Hospitality</span>
+      <h1>TRUPAS</h1>
+      <p class="hero-tagline">顧客の信頼を、可視化する。</p>
+      <p class="hero-description">
+        TRUPASは、店舗とお客様の間に新しい信頼の形を創るサービスです。<br>
+        来店マナーをAIが評価し、信頼スコアとメダルで可視化。<br>
+        優れたお客様が正しく評価される世界を実現します。
+      </p>
+      <a href="#about" class="hero-cta">詳しく見る</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="section-label">About</p>
+          <h2 class="section-title">信頼が見える、<br>新しいホスピタリティ</h2>
+          <p>
+            ホスピタリティ業界では、お客様のマナーや信頼性を客観的に評価する仕組みがありませんでした。
+            TRUPASは、サービス利用後にスタッフが簡単な評価を行い、AIが総合判定することで、
+            お客様の「信頼」を可視化します。
+          </p>
+          <p>
+            お客様は来店を重ねるごとにポイントとメダルを獲得し、
+            自分の信頼度をLINEからいつでも確認できます。
+            加盟店にとっても、リピーターの質を把握できる新しい指標となります。
+          </p>
+        </div>
+        <div class="about-visual">
+          <div class="diamond">&#x25C7;</div>
+          <h3>Trust Score</h3>
+          <p>AIが来店マナーを多角的に評価し、<br>公正な信頼スコアを算出します</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="section-inner">
+      <p class="section-label">Features</p>
+      <h2 class="section-title">TRUPASの特徴</h2>
+      <p class="section-subtitle">シンプルな仕組みで、確かな信頼を構築します。</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F916;</div>
+          <h3>AI自動判定</h3>
+          <p>スタッフの評価をAIが分析し、公正で一貫性のある信頼スコアを自動で算出します。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F3C5;</div>
+          <h3>メダルシステム</h3>
+          <p>礼儀、思いやり、時間厳守など15種類のメダルでお客様の優れた行動を称えます。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F4F1;</div>
+          <h3>LINE連携</h3>
+          <p>LINEからチェックインし、ポイントやステータスをいつでも確認。専用アプリは不要です。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x26A1;</div>
+          <h3>ノーコード運用</h3>
+          <p>加盟店の操作はスマートフォンから簡単な評価を送信するだけ。技術的な知識は不要です。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F512;</div>
+          <h3>プライバシー配慮</h3>
+          <p>個人情報は最小限に。LINE UIDベースの匿名運用で、お客様のプライバシーを守ります。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F504;</div>
+          <h3>冪等性保証</h3>
+          <p>二重処理を防ぐ設計により、ポイントの誤加算やデータの不整合を防止します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how">
+    <div class="section-inner">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">ご利用の流れ</h2>
+      <p class="section-subtitle">4つのステップで信頼が可視化されます。</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>チェックイン</h3>
+          <p>お客様がLINEのリッチメニューからチェックイン</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>スタッフ評価</h3>
+          <p>サービス利用後、スタッフが簡単なチェック項目でお客様のマナーを評価</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>AI判定</h3>
+          <p>AIがスタッフ評価を分析し、信頼スコアとメダルを自動判定</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>ポイント反映</h3>
+          <p>ポイントとメダルがお客様に付与され、LINEで通知</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDALS -->
+  <section class="medals" id="medals">
+    <div class="section-inner">
+      <p class="section-label">Medals</p>
+      <h2 class="section-title">15種のメダル</h2>
+      <p class="section-subtitle">お客様の優れた行動を多角的に評価します。</p>
+      <div class="medal-categories">
+        <div class="medal-category">
+          <div class="medal-category-icon">&#x1F91D;</div>
+          <h3>品格 Dignity</h3>
+          <p class="medal-list">
+            Courteous / 礼節<br>Considerate / 思いやり<br>Gracious / 温雅<br>Elegant / 気品
+          </p>
+        </div>
+        <div class="medal-category">
+          <div class="medal-category-icon">&#x1F3AF;</div>
+          <h3>信頼 Trust</h3>
+          <p class="medal-list">
+            Punctual / 律儀<br>Faithful / 誠実<br>Sincere / 真心<br>Respectful / 敬意
+          </p>
+        </div>
+        <div class="medal-category">
+          <div class="medal-category-icon">&#x2728;</div>
+          <h3>丁寧 Care</h3>
+          <p class="medal-list">
+            Pristine / 清雅<br>Gentle / 丁寧<br>Grateful / 感謝<br>Mindful / 心得
+          </p>
+        </div>
+        <div class="medal-category">
+          <div class="medal-category-icon">&#x1F451;</div>
+          <h3>貢献 Legacy</h3>
+          <p class="medal-list">
+            Patron / 愛顧<br>Ambassador / 推薦<br>Laureate / 栄誉
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section class="tiers" id="tiers">
+    <div class="section-inner">
+      <p class="section-label">Tiers</p>
+      <h2 class="section-title">4つのティアランク</h2>
+      <p class="section-subtitle">利用を重ねるほど、信頼が積み上がります。</p>
+      <div class="tier-grid">
+        <div class="tier-card">
+          <div class="tier-icon">&#x1F7E4;</div>
+          <h3>Bronze</h3>
+          <p>すべてのお客様のスタート地点。最初の信頼を築きましょう。</p>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon">&#x1FA99;</div>
+          <h3>Silver</h3>
+          <p>信頼の実績が認められたお客様。安定したマナーの証です。</p>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon">&#x1F31F;</div>
+          <h3>Gold</h3>
+          <p>高い信頼を獲得したお客様。加盟店からも特別な存在として認識されます。</p>
+        </div>
+        <div class="tier-card">
+          <div class="tier-icon">&#x1F48E;</div>
+          <h3>Platinum</h3>
+          <p>最高ランクの信頼。卓越したホスピタリティ精神の持ち主です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR FACILITIES -->
+  <section class="for-facilities" id="facilities">
+    <div class="section-inner">
+      <p class="section-label">For Partners</p>
+      <h2 class="section-title">加盟店の方へ</h2>
+      <p class="section-subtitle">TRUPASの導入は簡単です。</p>
+      <div class="facility-benefits">
+        <div class="benefit">
+          <div class="benefit-icon">&#x1F4CB;</div>
+          <div>
+            <h3>簡単な導入</h3>
+            <p>専用のシステム構築は不要。LINE公式アカウントとの連携だけで始められます。</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">&#x1F4CA;</div>
+          <div>
+            <h3>顧客品質の可視化</h3>
+            <p>リピーターの信頼度を把握し、質の高いお客様との関係を深められます。</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">&#x1F4B0;</div>
+          <div>
+            <h3>低コスト運用</h3>
+            <p>ノーコードプラットフォーム上で動作。サーバー費用やエンジニアリングコストを最小限に。</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">&#x1F4AC;</div>
+          <div>
+            <h3>お客様との接点</h3>
+            <p>LINE通知でお客様と継続的な関係を構築。リピート率の向上に貢献します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-inner">
+      <h2>TRUPASを導入しませんか？</h2>
+      <p>まずはお気軽にお問い合わせください。</p>
+      <a href="mailto:odoriba.shimazaki@gmail.com" class="cta-button">お問い合わせ</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">TRUPAS</div>
+    <p class="footer-text">Trust Visualization for Hospitality</p>
+    <p class="footer-text">運営: 株式会社ODORIBA</p>
+    <p class="footer-copyright">&copy; 2026 TRUPAS. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
