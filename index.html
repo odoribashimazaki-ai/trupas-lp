@@ -9,6 +9,11 @@
   <meta property="og:description" content="顧客の信頼を可視化する新しいサービス。来店マナーを評価し、信頼スコアとメダルで可視化します。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://trupas.jp">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -62,12 +67,21 @@
     }
 
     .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--gold);
       letter-spacing: 0.15em;
       text-decoration: none;
+    }
+
+    .logo-symbol {
+      width: 32px;
+      height: 36px;
+      flex-shrink: 0;
     }
 
     .nav-links {
@@ -550,7 +564,17 @@
   <!-- HEADER -->
   <header>
     <nav>
-      <a href="#" class="logo">TRUPAS</a>
+      <a href="#" class="logo">
+        <svg class="logo-symbol" viewBox="-5 -35 210 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 65 L30 30 Q30 25 35 25 L165 25 Q170 25 170 30 L170 65 C170 130 100 175 100 175 C100 175 30 130 30 65Z" stroke="#ffffff" stroke-width="10" fill="none" stroke-linejoin="round"/>
+          <line x1="30" y1="25" x2="170" y2="25" stroke="#c9a96e" stroke-width="5"/>
+          <path d="M35 25 L65 -8 L80 12 L100 -15 L120 12 L135 -8 L165 25" stroke="#c9a96e" stroke-width="5.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+          <polygon points="65,-8 68,-14 65,-20 62,-14" fill="#c9a96e"/>
+          <polygon points="100,-15 103,-21 100,-27 97,-21" fill="#c9a96e"/>
+          <polygon points="135,-8 138,-14 135,-20 132,-14" fill="#c9a96e"/>
+        </svg>
+        TRUPAS
+      </a>
       <ul class="nav-links">
         <li><a href="#about">TRUPASとは</a></li>
         <li><a href="#features">特徴</a></li>
