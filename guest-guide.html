@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRUPAS ご利用ガイド</title>
+  <style>
+    @page { size: A4; margin: 16mm; }
+    :root {
+      --navy: #16213e; --gold: #c9a96e; --gold-light: #e8d5b0;
+      --text: #2c2c2c; --text-sub: #666; --white: #ffffff; --gray-50: #faf9f7;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif;
+      color: var(--text); line-height: 1.7; background: var(--white);
+      max-width: 640px; margin: 0 auto; padding: 32px 24px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center; margin-bottom: 32px;
+      padding-bottom: 24px; border-bottom: 2px solid var(--gold);
+    }
+    .header-logo {
+      font-size: 28px; font-weight: 800; color: var(--navy);
+      letter-spacing: 6px; margin-bottom: 4px;
+    }
+    .header-tagline {
+      font-size: 12px; color: var(--gold); letter-spacing: 2px;
+    }
+    .header-title {
+      font-size: 20px; font-weight: 700; color: var(--navy);
+      margin-top: 20px;
+    }
+
+    /* Steps */
+    .steps { margin: 24px 0 32px; }
+    .step {
+      display: flex; gap: 16px; margin-bottom: 24px;
+      align-items: flex-start;
+    }
+    .step-number {
+      flex-shrink: 0; width: 40px; height: 40px;
+      background: var(--navy); color: var(--gold);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700;
+    }
+    .step-content { flex: 1; padding-top: 6px; }
+    .step-title {
+      font-size: 15px; font-weight: 700; color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .step-desc {
+      font-size: 13px; color: var(--text-sub); line-height: 1.6;
+    }
+
+    /* Tier info */
+    .tier-section {
+      background: var(--gray-50); border-radius: 12px;
+      padding: 20px 24px; margin-bottom: 24px;
+    }
+    .tier-section-title {
+      font-size: 14px; font-weight: 700; color: var(--navy);
+      margin-bottom: 12px; text-align: center;
+    }
+    .tier-row {
+      display: flex; justify-content: center; gap: 12px;
+      flex-wrap: wrap;
+    }
+    .tier-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 20px; font-size: 12px;
+      font-weight: 600; background: var(--white);
+      border: 1px solid #e0dbd3;
+    }
+    .tier-badge .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .dot-bronze { background: #cd7f32; }
+    .dot-silver { background: #a0a0a0; }
+    .dot-gold { background: #d4a843; }
+    .dot-platinum { background: #7b8ea0; }
+
+    /* Note */
+    .note {
+      font-size: 12px; color: var(--text-sub);
+      background: #f8f6f2; border-left: 3px solid var(--gold-light);
+      padding: 12px 16px; border-radius: 0 8px 8px 0;
+      margin-bottom: 24px; line-height: 1.7;
+    }
+
+    /* LINE CTA */
+    .line-cta {
+      text-align: center; margin: 32px 0;
+      padding: 24px; border: 2px dashed var(--gold-light);
+      border-radius: 12px;
+    }
+    .line-cta-text {
+      font-size: 14px; font-weight: 600; color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .line-cta-sub {
+      font-size: 12px; color: var(--text-sub);
+      margin-top: 8px;
+    }
+    .qr-placeholder {
+      width: 140px; height: 140px; margin: 12px auto;
+      border: 2px dashed #ccc; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: #999;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center; margin-top: 32px;
+      padding-top: 16px; border-top: 1px solid #eee;
+      font-size: 11px; color: #999;
+    }
+    .footer a { color: var(--gold); text-decoration: none; }
+
+    @media print {
+      body { padding: 0; max-width: none; }
+      .line-cta { border: 2px solid var(--gold-light); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-logo">TRUPAS</div>
+    <div class="header-tagline">Trust Visualization for Hospitality</div>
+    <div class="header-title">ご利用ガイド</div>
+  </div>
+
+  <p style="font-size: 14px; color: var(--text); margin-bottom: 24px; text-align: center;">
+    TRUPASは、あなたの来店体験を「信頼」として可視化するサービスです。<br>
+    ご利用を重ねるほど、ステータスとメダルが成長します。
+  </p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <div class="step-title">LINE友だち追加</div>
+        <div class="step-desc">TRUPAS公式アカウントを友だちに追加してください。下のQRコードから追加できます。</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <div class="step-title">チェックイン</div>
+        <div class="step-desc">店舗に設置されたQRコードをスマートフォンで読み取り、チェックインしてください。LINEアプリ内で自動的にチェックイン画面が開きます。</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <div class="step-title">チェックアウト</div>
+        <div class="step-desc">ご利用が終わりましたら、LINEメニューからチェックアウトしてください。お礼メッセージが届きます。</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <div class="step-title">ステータス更新</div>
+        <div class="step-desc">ご利用後、あなたのステータスとメダルが更新されます。LINEに通知が届きますので「マイステータス」からご確認ください。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tier-section">
+    <div class="tier-section-title">ステータスランク</div>
+    <div class="tier-row">
+      <span class="tier-badge"><span class="dot dot-bronze"></span>Bronze</span>
+      <span class="tier-badge"><span class="dot dot-silver"></span>Silver</span>
+      <span class="tier-badge"><span class="dot dot-gold"></span>Gold</span>
+      <span class="tier-badge"><span class="dot dot-platinum"></span>Platinum</span>
+    </div>
+  </div>
+
+  <div class="note">
+    TRUPASでは、ご利用実績に応じて「礼儀正しい」「時間厳守」「思いやり」などのメダルが贈られます。メダルとステータスは、加盟店であなたをお迎えする際の参考にさせていただきます。
+  </div>
+
+  <div class="line-cta">
+    <div class="line-cta-text">TRUPAS LINE公式アカウント</div>
+    <div class="qr-placeholder">LINE QRコード<br>ここに貼付</div>
+    <div class="line-cta-sub">QRコードを読み取って友だち追加してください</div>
+  </div>
+
+  <div class="footer">
+    <p>TRUPAS — 運営: 株式会社ODORIBA</p>
+    <p style="margin-top: 4px;"><a href="https://trupas.jp">trupas.jp</a> | <a href="https://trupas.jp/privacy.html">プライバシーポリシー</a></p>
+  </div>
+
+</body>
+</html>
