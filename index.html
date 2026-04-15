@@ -429,6 +429,68 @@
       line-height: 1.7;
     }
 
+    /* ===== PARTNER STORES ===== */
+    .stores { background: var(--white); }
+
+    .store-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .store-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 24px;
+      background: var(--gray-50);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .store-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(22, 33, 62, 0.06);
+    }
+
+    .store-card-icon {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .store-card-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .store-card-meta {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+    }
+
+    .stores-note {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: var(--gray-600);
+    }
+
+    .stores-note a {
+      color: var(--gold-dark);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
     /* ===== FOR FACILITIES ===== */
     .for-facilities { background: var(--white); }
 
@@ -471,42 +533,130 @@
       line-height: 1.7;
     }
 
-    /* ===== CTA ===== */
-    .cta-section {
+    /* ===== APPLICATION FORM ===== */
+    .apply-section {
       background: linear-gradient(135deg, var(--navy), var(--navy-light));
-      text-align: center;
       padding: 80px 24px;
     }
 
-    .cta-section h2 {
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
+    .apply-section .section-label { color: var(--gold); }
+    .apply-section .section-title { color: var(--white); }
+    .apply-section .section-subtitle { color: rgba(255,255,255,0.6); }
+
+    .apply-form {
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-group label {
+      font-size: 0.8rem;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+
+    .form-group label .required {
+      color: #e07a5f;
+      margin-left: 4px;
+      font-size: 0.75rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.07);
       color: var(--white);
-      margin-bottom: 16px;
-      font-weight: 700;
+      font-size: 0.9rem;
+      font-family: inherit;
+      transition: border-color 0.3s;
     }
 
-    .cta-section p {
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 32px;
-      font-size: 0.95rem;
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.3);
     }
 
-    .cta-button {
-      display: inline-block;
-      padding: 16px 48px;
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .form-group select { appearance: none; cursor: pointer; }
+    .form-group select option { background: var(--navy); color: var(--white); }
+
+    .form-group textarea { min-height: 80px; resize: vertical; }
+
+    .apply-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
       background: linear-gradient(135deg, var(--gold), var(--gold-dark));
       color: var(--navy-dark);
-      text-decoration: none;
+      border: none;
       font-weight: 700;
       font-size: 0.95rem;
       letter-spacing: 0.05em;
-      border-radius: 4px;
+      border-radius: 6px;
+      cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
+      margin-top: 8px;
     }
 
-    .cta-button:hover {
+    .apply-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 30px rgba(201, 169, 110, 0.3);
+    }
+
+    .apply-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .form-message {
+      text-align: center;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .form-message.success {
+      display: block;
+      background: rgba(74, 124, 89, 0.2);
+      border: 1px solid rgba(74, 124, 89, 0.4);
+      color: #a8d5b8;
+    }
+
+    .form-message.error {
+      display: block;
+      background: rgba(160, 64, 64, 0.2);
+      border: 1px solid rgba(160, 64, 64, 0.4);
+      color: #e0a0a0;
+    }
+
+    .apply-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 12px;
     }
 
     /* ===== FOOTER ===== */
@@ -546,9 +696,13 @@
       .medal-categories,
       .tier-grid { grid-template-columns: 1fr 1fr; }
 
+      .store-grid { grid-template-columns: 1fr; }
+
       .steps { grid-template-columns: 1fr 1fr; }
 
       .facility-benefits { grid-template-columns: 1fr; }
+
+      .form-row { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
@@ -573,6 +727,7 @@
         <li><a href="#features">特徴</a></li>
         <li><a href="#how">仕組み</a></li>
         <li><a href="#tiers">ティア</a></li>
+        <li><a href="#stores">加盟店一覧</a></li>
         <li><a href="#facilities">加盟店の方へ</a></li>
       </ul>
     </nav>
@@ -762,6 +917,32 @@
     </div>
   </section>
 
+  <!-- PARTNER STORES -->
+  <section class="stores" id="stores">
+    <div class="section-inner">
+      <p class="section-label">Partner Stores</p>
+      <h2 class="section-title">加盟店一覧</h2>
+      <p class="section-subtitle">TRUPASをご利用いただける店舗です。</p>
+      <div class="store-grid">
+        <div class="store-card">
+          <div class="store-card-icon">&#x1F3E8;</div>
+          <div>
+            <div class="store-card-name">MARUKI齋福</div>
+            <div class="store-card-meta">旅館 — 宮城県角田市</div>
+          </div>
+        </div>
+        <div class="store-card">
+          <div class="store-card-icon">&#x2615;</div>
+          <div>
+            <div class="store-card-name">SakurABi</div>
+            <div class="store-card-meta">カフェ — 宮城県柴田郡柴田町</div>
+          </div>
+        </div>
+      </div>
+      <p class="stores-note">加盟店は順次拡大中です。<br><a href="#apply">加盟店のお申し込みはこちら →</a></p>
+    </div>
+  </section>
+
   <!-- FOR FACILITIES -->
   <section class="for-facilities" id="facilities">
     <div class="section-inner">
@@ -801,14 +982,117 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-section">
+  <!-- APPLICATION FORM -->
+  <section class="apply-section" id="apply">
     <div class="section-inner">
-      <h2>TRUPASを導入しませんか？</h2>
-      <p>まずはお気軽にお問い合わせください。</p>
-      <a href="mailto:odoriba.shimazaki@gmail.com" class="cta-button">お問い合わせ</a>
+      <p class="section-label">Application</p>
+      <h2 class="section-title">加盟店のお申し込み</h2>
+      <p class="section-subtitle">β版期間中は無料でご利用いただけます。下記フォームよりお申し込みください。</p>
+
+      <form class="apply-form" id="apply-form" onsubmit="return submitApplication(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>店舗名 <span class="required">*</span></label>
+            <input type="text" name="store_name" required placeholder="例: カフェ花">
+          </div>
+          <div class="form-group">
+            <label>業種 <span class="required">*</span></label>
+            <select name="category" required>
+              <option value="">選択してください</option>
+              <option value="旅館">旅館</option>
+              <option value="ホテル">ホテル</option>
+              <option value="民泊">民泊</option>
+              <option value="カフェ">カフェ</option>
+              <option value="レストラン">レストラン</option>
+              <option value="居酒屋">居酒屋</option>
+              <option value="美容室・サロン">美容室・サロン</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>所在地 <span class="required">*</span></label>
+          <input type="text" name="location" required placeholder="例: 宮城県仙台市青葉区">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>担当者名 <span class="required">*</span></label>
+            <input type="text" name="contact_name" required placeholder="例: 山田太郎">
+          </div>
+          <div class="form-group">
+            <label>メールアドレス <span class="required">*</span></label>
+            <input type="email" name="email" required placeholder="例: info@example.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>電話番号</label>
+          <input type="tel" name="phone" placeholder="例: 090-1234-5678">
+        </div>
+
+        <div class="form-group">
+          <label>ご質問・ご要望</label>
+          <textarea name="message" placeholder="導入に関するご質問があればお気軽にどうぞ"></textarea>
+        </div>
+
+        <button type="submit" class="apply-btn" id="apply-btn">申し込む</button>
+        <div class="form-message" id="form-message"></div>
+        <p class="apply-note">お申し込み後、1〜2営業日以内にご連絡いたします。</p>
+      </form>
     </div>
   </section>
+
+  <script>
+    async function submitApplication(e) {
+      e.preventDefault();
+      var btn = document.getElementById('apply-btn');
+      var msg = document.getElementById('form-message');
+      btn.disabled = true;
+      btn.textContent = '送信中...';
+      msg.className = 'form-message';
+      msg.style.display = 'none';
+
+      var form = document.getElementById('apply-form');
+      var data = {
+        store_name: form.store_name.value.trim(),
+        category: form.category.value,
+        location: form.location.value.trim(),
+        contact_name: form.contact_name.value.trim(),
+        email: form.email.value.trim(),
+        phone: form.phone.value.trim(),
+        message: form.message.value.trim(),
+        submitted_at: new Date().toISOString()
+      };
+
+      try {
+        var res = await fetch('https://hook.eu1.make.com/kuq29uo2oqghvtir3psx83o22mkdhlil', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        var result = await res.json();
+
+        if (result.success) {
+          msg.className = 'form-message success';
+          msg.textContent = 'お申し込みありがとうございます。担当者より折り返しご連絡いたします。';
+          msg.style.display = 'block';
+          form.reset();
+        } else {
+          throw new Error(result.message || '送信に失敗しました');
+        }
+      } catch (err) {
+        msg.className = 'form-message error';
+        msg.textContent = '送信に失敗しました。お手数ですが odoriba.shimazaki@gmail.com までご連絡ください。';
+        msg.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '申し込む';
+      }
+      return false;
+    }
+  </script>
 
   <!-- FOOTER -->
   <footer>
