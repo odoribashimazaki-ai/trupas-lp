@@ -1509,6 +1509,20 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
         });
+        // GA4 conversion event
+        if (typeof gtag === 'function') {
+          gtag('event', 'generate_lead', {
+            event_category: 'form',
+            event_label: 'contact_inquiry'
+          });
+        }
+        // Meta Pixel conversion event
+        if (typeof fbq === 'function') {
+          fbq('track', 'Lead', {
+            content_name: 'contact_inquiry',
+            content_category: data.type
+          });
+        }
         msg.className = 'form-message success';
         msg.textContent = 'お問い合わせありがとうございます。内容を確認のうえ、折り返しご連絡いたします。';
         msg.style.display = 'block';
