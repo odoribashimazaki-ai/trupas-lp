@@ -8,6 +8,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-GSWD0NHKJS');
+    gtag('config', 'AW-11562883960');
   </script>
   <!-- Meta Pixel Code -->
   <script>
@@ -205,6 +206,32 @@
     .hero-cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 30px rgba(201, 169, 110, 0.3);
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-cta-sub {
+      display: inline-block;
+      padding: 16px 36px;
+      border: 1px solid rgba(255,255,255,0.35);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      border-radius: 4px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .hero-cta-sub:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.6);
     }
 
     /* ===== BETA BANNER ===== */
@@ -748,12 +775,92 @@
       border-radius: 12px;
       border: 1px solid var(--gray-200);
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
     }
 
     .store-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(22, 33, 62, 0.06);
     }
+
+    /* Premium partner card */
+    .store-card.premium {
+      grid-column: 1 / -1;
+      border: 2px solid var(--gold);
+      background: linear-gradient(135deg, #fffdf7 0%, #faf6ee 100%);
+      padding: 0;
+      overflow: hidden;
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    .store-card.premium:hover {
+      box-shadow: 0 12px 32px rgba(201, 169, 110, 0.15);
+    }
+
+    .premium-photo {
+      flex-shrink: 0;
+      width: 240px;
+      min-height: 200px;
+      background: var(--gray-200);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .premium-content {
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .premium-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      color: var(--gold);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .premium-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .premium-meta {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      margin-bottom: 12px;
+    }
+
+    .premium-desc {
+      font-size: 0.9rem;
+      color: var(--gray-800);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .premium-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+      text-decoration: none;
+    }
+
+    .premium-link:hover { color: var(--navy); }
 
     .store-card-icon {
       flex-shrink: 0;
@@ -775,6 +882,17 @@
       margin-bottom: 4px;
     }
 
+    .store-card-category {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+      background: rgba(201, 169, 110, 0.12);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+
     .store-card-meta {
       font-size: 0.8rem;
       color: var(--gray-600);
@@ -791,6 +909,128 @@
       color: var(--gold-dark);
       text-decoration: none;
       font-weight: 500;
+    }
+
+    /* ===== PARTNER VALUE PROPOSITION ===== */
+    .partner-value {
+      background: var(--white);
+      padding: 100px 24px;
+    }
+
+    .value-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    .value-card {
+      background: var(--gray-50);
+      border-radius: 12px;
+      border: 1px solid var(--gray-200);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .value-problem { margin-bottom: 16px; }
+
+    .value-problem-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(224, 122, 95, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      color: #c06040;
+      font-size: 1.3rem;
+    }
+
+    .value-problem h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .value-problem p {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    .value-arrow {
+      color: var(--gold);
+      margin: 8px 0;
+    }
+
+    .value-solution {
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: 8px;
+      padding: 20px 16px;
+      width: 100%;
+    }
+
+    .value-solution h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .value-solution p {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+    }
+
+    .value-network {
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: 12px;
+      padding: 36px 32px;
+    }
+
+    .value-network-inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .value-network-icon {
+      flex-shrink: 0;
+      width: 64px;
+      height: 64px;
+      background: rgba(201, 169, 110, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+    }
+
+    .value-network h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .value-network p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .value-cards { grid-template-columns: 1fr; }
+      .value-network-inner { flex-direction: column; text-align: center; }
     }
 
     /* ===== FOR FACILITIES ===== */
@@ -933,6 +1173,25 @@
       box-shadow: none;
     }
 
+    .form-optional-toggle {
+      text-align: center;
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 8px;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      user-select: none;
+    }
+
+    .form-optional-toggle:hover { opacity: 1; }
+
+    .form-optional-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
     .form-message {
       text-align: center;
       padding: 16px;
@@ -989,6 +1248,31 @@
       margin-top: 24px;
     }
 
+    /* ===== MOBILE FIXED CTA ===== */
+    .mobile-fixed-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--navy-dark);
+      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      transition: transform 0.3s, opacity 0.3s;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+    }
+
+    @media (max-width: 768px) {
+      .mobile-fixed-cta { display: block; }
+      footer { padding-bottom: 64px; }
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -1000,6 +1284,10 @@
       .tier-grid { grid-template-columns: 1fr 1fr; }
 
       .store-grid { grid-template-columns: 1fr; }
+
+      .store-card.premium { flex-direction: column; }
+      .premium-photo { width: 100%; min-height: 180px; }
+      .premium-content { padding: 20px 24px; }
 
       .steps { grid-template-columns: 1fr 1fr; }
 
@@ -1036,7 +1324,7 @@
         <li><a href="#features">特徴</a></li>
         <li><a href="#how">仕組み</a></li>
         <li><a href="#guests">ゲストの方へ</a></li>
-        <li><a href="#facilities">パートナーの方へ</a></li>
+        <li><a href="#partner-value">パートナーの方へ</a></li>
         <li><a href="#contact">お問い合わせ</a></li>
         <li><a href="#apply" style="color: var(--gold); font-weight: 500;">β版申し込み</a></li>
       </ul>
@@ -1046,24 +1334,27 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <span class="hero-badge">Trust Visualization for Hospitality</span>
+      <span class="hero-badge">β版パートナー募集中 — 初期費用・月額 無料</span>
       <h1>TRUPAS</h1>
-      <p class="hero-tagline">顧客の信頼を、可視化する。</p>
+      <p class="hero-tagline">初めてのゲストでも、安心して迎えられる。</p>
       <p class="hero-description">
-        TRUPASは、パートナーとゲストの間に新しい信頼の形を創るサービスです。<br>
-        来店マナーをAIが評価し、信頼スコアとメダルで可視化。<br>
-        優れたゲストが正しく評価される世界を実現します。
+        予約だけでは分からないゲストの信頼度を、AIが可視化。<br>
+        マナー評価・信頼スコア・メダルで「見える安心」を提供し、<br>
+        トラブルの抑止とリピーターの定着を実現します。
       </p>
-      <a href="#about" class="hero-cta">詳しく見る</a>
+      <div class="hero-cta-group">
+        <a href="#apply" class="hero-cta">無料で申し込む</a>
+        <a href="#about" class="hero-cta-sub">詳しく見る</a>
+      </div>
     </div>
   </section>
 
   <!-- BETA BANNER -->
   <section class="beta-banner">
     <div class="beta-banner-inner">
-      <span class="beta-badge">2026.4.19 — 5.18</span>
-      <h2>β版パートナーを無料で募集しています</h2>
-      <p>β期間中はすべての機能を無料でご利用いただけます。<br>正式版リリース後も、β参加パートナーには優待をご用意しています。</p>
+      <span class="beta-badge">2026.4.19 — 5.18 / 残り10社限定</span>
+      <h2>β版パートナーを無料で募集中</h2>
+      <p>β期間中はすべての機能を<strong>完全無料</strong>で利用可能。<br>正式版リリース後も、β参加パートナーには<strong>特別優待</strong>をご用意しています。</p>
       <div class="beta-highlights">
         <div class="beta-highlight-item">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1129,7 +1420,7 @@
         <div class="feature-card">
           <div class="feature-icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
           <h3>LINE連携</h3>
-          <p>LINEからチェックインし、ポイントやステータスをいつでも確認。専用アプリは不要です。</p>
+          <p>LINEからチェックインし、ティアやメダルのステータスをいつでも確認。専用アプリは不要です。</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
@@ -1317,16 +1608,96 @@
     <div class="section-inner">
       <p class="section-label">Partner Stores</p>
       <h2 class="section-title">パートナー一覧</h2>
-      <p class="section-subtitle">2026年4月19日よりβ版を開始しました。現在、パートナーを募集中です。</p>
+      <p class="section-subtitle">TRUPASを導入しているパートナー施設をご紹介します。</p>
       <div class="store-grid" style="justify-content: center;">
-        <div class="store-card" style="border-style: dashed; opacity: 0.7; text-align: center; justify-content: center;">
+
+        <!-- Recruitment card -->
+        <div class="store-card" style="border-style: dashed; border-color: var(--gold); text-align: center; justify-content: center; flex-direction: column; gap: 8px;">
+          <div class="store-card-icon" style="background: linear-gradient(135deg, var(--gold), var(--gold-dark));">
+            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
           <div>
-            <div class="store-card-name" style="color: var(--gold);">β版パートナー募集中</div>
-            <div class="store-card-meta">旅館・ホテル・飲食店・美容室・エステなど<br>予約制ビジネスを運営されている方</div>
+            <div class="store-card-name" style="color: var(--gold-dark);">パートナー募集中</div>
+            <div class="store-card-meta">あなたの施設もTRUPASに参加しませんか？</div>
+          </div>
+        </div>
+
+      </div>
+      <p class="stores-note">初期費用無料、月額¥9,800ですべての機能をご利用いただけます。<br><a href="#apply">パートナーのお申し込みはこちら →</a></p>
+    </div>
+  </section>
+
+  <!-- PARTNER VALUE PROPOSITION -->
+  <section class="partner-value" id="partner-value">
+    <div class="section-inner">
+      <p class="section-label">Why TRUPAS?</p>
+      <h2 class="section-title">こんなお悩みはありませんか？</h2>
+      <p class="section-subtitle">予約制ビジネスに共通する「見えない不安」をTRUPASが解決します。</p>
+
+      <div class="value-cards">
+        <div class="value-card">
+          <div class="value-problem">
+            <div class="value-problem-icon">
+              <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15h8M9 9h.01M15 9h.01"/></svg>
+            </div>
+            <h3>初めてのゲスト、<br>どんな人か分からない</h3>
+            <p>予約は入ったけれど、どんなゲストが来るか分からない。マナー違反やトラブルへの不安が常にある。</p>
+          </div>
+          <div class="value-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          </div>
+          <div class="value-solution">
+            <h4>他の加盟店での実績が見える</h4>
+            <p>ゲストのティアとメダルを予約時に確認。他店舗で積み上げた信頼情報で、初対面でも安心して迎えられます。</p>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-problem">
+            <div class="value-problem-icon">
+              <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3>無断キャンセルや<br>マナー違反をなくしたい</h3>
+            <p>ノーショー、備品の損傷、騒音トラブル…。問題が起きてからでは遅いが、事前に防ぐ手段がない。</p>
+          </div>
+          <div class="value-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          </div>
+          <div class="value-solution">
+            <h4>「評価される」意識が抑止力になる</h4>
+            <p>ゲストは自分の行動がスコアに反映されることを知っています。それだけで無断キャンセルやマナー違反は大幅に減少します。</p>
+          </div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-problem">
+            <div class="value-problem-icon">
+              <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h3>良いゲストとの関係を<br>もっと深めたい</h3>
+            <p>マナーの良いゲストこそ大切にしたいが、常連以外にはその良さを把握する方法がない。</p>
+          </div>
+          <div class="value-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          </div>
+          <div class="value-solution">
+            <h4>優良ゲストを発見し、特別に迎えられる</h4>
+            <p>ティア別に特典を設定すれば、Gold・Platinumのゲストに特別な体験を提供でき、リピート率と客単価の向上につながります。</p>
           </div>
         </div>
       </div>
-      <p class="stores-note">β期間中（5/18まで）はすべての機能を無料でご利用いただけます。<br><a href="#apply">パートナーのお申し込みはこちら →</a></p>
+
+      <div class="value-network">
+        <div class="value-network-inner">
+          <div class="value-network-icon">
+            <svg width="2em" height="2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div>
+            <h3>加盟店が増えるほど、全員の価値が上がる</h3>
+            <p>TRUPASは加盟店ネットワークです。パートナーが増えるほどゲストの評価データが厚くなり、信頼情報の精度と有用性が高まります。早期参加で、ネットワークの成長を最初から活かせます。</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1335,7 +1706,7 @@
     <div class="section-inner">
       <p class="section-label">For Partners</p>
       <h2 class="section-title">パートナーの方へ</h2>
-      <p class="section-subtitle">導入は簡単、効果は確実。ゲストの信頼を見える化し、リピート率を高めます。</p>
+      <p class="section-subtitle">導入は簡単、効果は確実。初めてのゲストの信頼度が事前に分かり、トラブルを未然に防ぎます。</p>
       <div class="facility-benefits">
         <div class="benefit">
           <div class="benefit-icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></div>
@@ -1375,8 +1746,8 @@
         <div class="benefit">
           <div class="benefit-icon"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-4a2 2 0 000 4h2a2 2 0 010 4H8M12 6v2m0 8v2"/></svg></div>
           <div>
-            <h3>β版は完全無料</h3>
-            <p>初期費用・月額費用ともにゼロ。β期間中にすべての機能をお試しいただけます。</p>
+            <h3>初期費用ゼロ、シンプルな料金体系</h3>
+            <p>初期費用は一切かかりません。月額¥9,800ですべての機能をご利用いただけます。</p>
           </div>
         </div>
       </div>
@@ -1387,14 +1758,33 @@
   <section class="apply-section" id="apply">
     <div class="section-inner">
       <p class="section-label">Application</p>
-      <h2 class="section-title">パートナーのお申し込み</h2>
-      <p class="section-subtitle">β版期間中は無料でご利用いただけます。下記フォームよりお申し込みください。</p>
+      <h2 class="section-title">まずは無料で試してみませんか？</h2>
+      <p class="section-subtitle">β版は完全無料。3項目の入力で、最短即日に導入いただけます。</p>
 
+      <!--
+        ==========================================
+        β版フォーム（簡略版）
+        必須: パートナー名・メール・業種の3項目のみ
+        担当者名・所在地・電話番号・メッセージは折りたたみ任意
+
+        【正式版リリース時の変更点】
+        - 担当者名・所在地を必須に戻す
+        - 電話番号も必須を検討（有料契約のため）
+        - 折りたたみUIを廃止し、全項目表示に変更
+        - ボタン文言「無料で申し込む」→「申し込む」に変更
+        - 申し込みセクション見出しも有料前提に変更
+        ==========================================
+      -->
       <form class="apply-form" id="apply-form" onsubmit="return submitApplication(event)">
+        <div class="form-group">
+          <label>パートナー名 <span class="required">*</span></label>
+          <input type="text" name="store_name" required placeholder="例: カフェ花">
+        </div>
+
         <div class="form-row">
           <div class="form-group">
-            <label>パートナー名 <span class="required">*</span></label>
-            <input type="text" name="store_name" required placeholder="例: カフェ花">
+            <label>メールアドレス <span class="required">*</span></label>
+            <input type="email" name="email" required placeholder="例: info@example.com">
           </div>
           <div class="form-group">
             <label>業種 <span class="required">*</span></label>
@@ -1412,35 +1802,34 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label>所在地 <span class="required">*</span></label>
-          <input type="text" name="location" required placeholder="例: 東京都渋谷区">
+        <div class="form-optional-toggle" onclick="toggleOptionalFields()">
+          <span id="optional-toggle-text">+ 追加情報を入力する（任意）</span>
         </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label>担当者名 <span class="required">*</span></label>
-            <input type="text" name="contact_name" required placeholder="例: 山田太郎">
+        <div class="form-optional-fields" id="optional-fields" style="display: none;">
+          <div class="form-row">
+            <div class="form-group">
+              <label>担当者名</label>
+              <input type="text" name="contact_name" placeholder="例: 山田太郎">
+            </div>
+            <div class="form-group">
+              <label>所在地</label>
+              <input type="text" name="location" placeholder="例: 東京都渋谷区">
+            </div>
           </div>
           <div class="form-group">
-            <label>メールアドレス <span class="required">*</span></label>
-            <input type="email" name="email" required placeholder="例: info@example.com">
+            <label>電話番号</label>
+            <input type="tel" name="phone" placeholder="例: 090-1234-5678">
+          </div>
+          <div class="form-group">
+            <label>ご質問・ご要望</label>
+            <textarea name="message" placeholder="導入に関するご質問があればお気軽にどうぞ"></textarea>
           </div>
         </div>
 
-        <div class="form-group">
-          <label>電話番号</label>
-          <input type="tel" name="phone" placeholder="例: 090-1234-5678">
-        </div>
-
-        <div class="form-group">
-          <label>ご質問・ご要望</label>
-          <textarea name="message" placeholder="導入に関するご質問があればお気軽にどうぞ"></textarea>
-        </div>
-
-        <button type="submit" class="apply-btn" id="apply-btn">申し込む</button>
+        <button type="submit" class="apply-btn" id="apply-btn">無料で申し込む</button>
+        <p class="apply-note" style="margin-top: 8px;">入力は3項目だけ。1〜2営業日以内にご連絡いたします。</p>
         <div class="form-message" id="form-message"></div>
-        <p class="apply-note">お申し込み後、1〜2営業日以内にご連絡いたします。</p>
       </form>
     </div>
   </section>
@@ -1484,7 +1873,44 @@
     </div>
   </section>
 
+  <!-- Mobile fixed CTA -->
+  <a href="#apply" class="mobile-fixed-cta" id="mobile-cta">無料で申し込む</a>
+
   <script>
+    function toggleOptionalFields() {
+      var fields = document.getElementById('optional-fields');
+      var text = document.getElementById('optional-toggle-text');
+      if (fields.style.display === 'none') {
+        fields.style.display = 'flex';
+        text.textContent = '− 追加情報を閉じる';
+      } else {
+        fields.style.display = 'none';
+        text.textContent = '+ 追加情報を入力する（任意）';
+      }
+    }
+
+    // Show/hide mobile fixed CTA based on scroll position
+    (function() {
+      var cta = document.getElementById('mobile-cta');
+      var applySection = document.getElementById('apply');
+      if (!cta || !applySection) return;
+      function checkScroll() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        var applyTop = applySection.offsetTop;
+        var applyBottom = applyTop + applySection.offsetHeight;
+        // Hide when in the apply section or at the very top
+        if (scrollY < 300 || (scrollY + window.innerHeight > applyTop && scrollY < applyBottom)) {
+          cta.style.transform = 'translateY(100%)';
+          cta.style.opacity = '0';
+        } else {
+          cta.style.transform = 'translateY(0)';
+          cta.style.opacity = '1';
+        }
+      }
+      window.addEventListener('scroll', checkScroll, { passive: true });
+      checkScroll();
+    })();
+
     async function submitContact(e) {
       e.preventDefault();
       var btn = document.getElementById('contact-btn');
@@ -1514,6 +1940,10 @@
           gtag('event', 'generate_lead', {
             event_category: 'form',
             event_label: 'contact_inquiry'
+          });
+          // Google Ads conversion event
+          gtag('event', 'conversion', {
+            send_to: 'AW-11562883960/generate_lead'
           });
         }
         // Meta Pixel conversion event
@@ -1574,6 +2004,10 @@
               event_category: 'form',
               event_label: 'beta_application'
             });
+            // Google Ads conversion event
+            gtag('event', 'conversion', {
+              send_to: 'AW-11562883960/generate_lead'
+            });
           }
           // Meta Pixel conversion event
           if (typeof fbq === 'function') {
@@ -1595,7 +2029,7 @@
         msg.style.display = 'block';
       } finally {
         btn.disabled = false;
-        btn.textContent = '申し込む';
+        btn.textContent = '無料で申し込む';
       }
       return false;
     }
