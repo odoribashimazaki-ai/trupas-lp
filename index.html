@@ -234,6 +234,13 @@
       border-color: rgba(255,255,255,0.6);
     }
 
+    .hero-free-note {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.08em;
+    }
+
     /* ===== BETA BANNER ===== */
     .beta-banner {
       background: linear-gradient(135deg, var(--gold-dark), var(--gold));
@@ -1334,7 +1341,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <span class="hero-badge">β版パートナー募集中 — 初期費用・月額 無料</span>
+      <span class="hero-badge">β版パートナー募集中 — 完全無料</span>
       <h1>TRUPAS</h1>
       <p class="hero-tagline">初めてのゲストでも、安心して迎えられる。</p>
       <p class="hero-description">
@@ -1343,9 +1350,10 @@
         「評価される」という認識が、無断キャンセルやトラブルの抑止力にもなります。
       </p>
       <div class="hero-cta-group">
-        <a href="#apply" class="hero-cta">無料で申し込む</a>
+        <a href="#apply" class="hero-cta">β版を無料で始める</a>
         <a href="#about" class="hero-cta-sub">詳しく見る</a>
       </div>
+      <p class="hero-free-note">初期費用¥0・月額¥0・3分で導入完了</p>
     </div>
   </section>
 
@@ -1826,8 +1834,9 @@
           </div>
         </div>
 
-        <button type="submit" class="apply-btn" id="apply-btn">無料で申し込む</button>
+        <button type="submit" class="apply-btn" id="apply-btn">β版を無料で始める</button>
         <p class="apply-note" style="margin-top: 8px;">入力は3項目だけ。1〜2営業日以内にご連絡いたします。</p>
+        <p class="apply-note" style="margin-top: 4px; font-size: 0.78rem; color: var(--gray-600);">クレジットカード登録不要・β期間中は一切費用がかかりません</p>
         <div class="form-message" id="form-message"></div>
       </form>
     </div>
@@ -1873,7 +1882,7 @@
   </section>
 
   <!-- Mobile fixed CTA -->
-  <a href="#apply" class="mobile-fixed-cta" id="mobile-cta">無料で申し込む</a>
+  <a href="#apply" class="mobile-fixed-cta" id="mobile-cta">β版を無料で始める</a>
 
   <script>
     function toggleOptionalFields() {
@@ -2028,7 +2037,7 @@
         msg.style.display = 'block';
       } finally {
         btn.disabled = false;
-        btn.textContent = '無料で申し込む';
+        btn.textContent = 'β版を無料で始める';
       }
       return false;
     }
