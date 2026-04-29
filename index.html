@@ -1943,6 +1943,24 @@
         submitted_at: new Date().toISOString()
       };
 
+      // Client-side validation
+      if (!data.name || !data.email || !data.message) {
+        msg.className = 'form-message error';
+        msg.textContent = 'お名前・メールアドレス・お問い合わせ内容は必須です。';
+        msg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = '送信する';
+        return false;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        msg.className = 'form-message error';
+        msg.textContent = '有効なメールアドレスを入力してください。';
+        msg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = '送信する';
+        return false;
+      }
+
       try {
         var res = await fetch('https://hook.eu1.make.com/i08cpkv5d44enhyom4u39q3f3ogk3nlm', {
           method: 'POST',
@@ -1998,6 +2016,24 @@
         message: form.message.value.trim(),
         submitted_at: new Date().toISOString()
       };
+
+      // Client-side validation
+      if (!data.store_name || !data.email || !data.category) {
+        msg.className = 'form-message error';
+        msg.textContent = '店舗名・メールアドレス・業種は必須です。';
+        msg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = '送信する';
+        return false;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        msg.className = 'form-message error';
+        msg.textContent = '有効なメールアドレスを入力してください。';
+        msg.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = '送信する';
+        return false;
+      }
 
       try {
         var res = await fetch('https://hook.eu1.make.com/kuq29uo2oqghvtir3psx83o22mkdhlil', {
